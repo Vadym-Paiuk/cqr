@@ -1,8 +1,16 @@
-<?php get_header();?> 
+<?php
+get_header();
 
-<?php if ( have_posts() ) while ( have_posts() ) : the_post();?>
-    <h1><?php the_title();?></h1>
-    <?php the_content();?>
-<?php endwhile;?>
+if ( have_posts() ) {
+	while ( have_posts() ) {
+		the_post();
+		
+		if ( has_category( 'webinars' ) ) {
+			get_template_part( 'parts/single/content', 'webinar' );
+		} else {
+			get_template_part( 'parts/single/content', 'default' );
+		}
+	}
+}
 
-<?php get_footer();?>
+get_footer();
