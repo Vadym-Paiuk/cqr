@@ -24,7 +24,7 @@
 		</div>
 		<div class="card-footer"><img class="text-icon"
 		                              src="<?php echo $assets_pass; ?>img/calendar.svg"
-		                              alt=""> <?php the_date( 'd M Y' ); ?>
+		                              alt=""> <?php echo get_the_date( 'd M Y' ); ?>
 		</div>
 	</a>
 </div>

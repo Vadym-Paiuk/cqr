@@ -11,15 +11,89 @@ document.addEventListener("DOMContentLoaded", function () {
   sliderFeatureServiceCategories();
   sliderIndustriesCategories();
   sliderBlogCategories();
-  sliderBlogCategories();
   copyCurrentLink();
+  updateBlogCat();
+  updateBlogSearch();
+  updateBlogPagination();
   AOS.init({once: true, duration: 400});
 });
+
+function updateBlogCat() {
+  $(document).on('click', '.blog .swiper-slide .tab-btn-content', function (e) {
+    e.preventDefault();
+
+    if ($(this).parent().hasClass('active')) {
+      return false;
+    }
+
+    $('.blog .swiper-slide .tab-btn').removeClass('active');
+    $(this).parent().addClass('active');
+
+    updateBlogPosts();
+  });
+}
+
+function updateBlogSearch() {
+  $(document).on('input', '.blog .blog-search-form input', function (e) {
+    e.preventDefault();
+
+    updateBlogPosts();
+  });
+}
+
+function updateBlogPagination() {
+  $(document).on('click', '.blog .blog__pagination .pagination-item a', function (e) {
+    e.preventDefault();
+
+    let paged = $(this).data('page');
+
+    updateBlogPosts(paged);
+  });
+}
+
+function updateBlogPosts(paged = false) {
+  let data = collectBlogData();
+
+  if (paged !== false) {
+    data.append('paged', paged);
+  }
+
+  $.ajax({
+    type: 'POST',
+    url: theme_ajax_object.wp_ajax,
+    data: data,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      if (response.success === true) {
+        $('.blog .blog__details').html(response.data);
+        $('html, body').animate({
+          scrollTop: $('.blog').offset().top
+        }, 500);
+      } else {
+        console.log('ERROR')
+      }
+    },
+    error: function () {
+      console.log('ERROR')
+    }
+  })
+}
+
+function collectBlogData() {
+  let data = new FormData($('.blog .blog-search-form')[0]),
+    cat = $('.blog .swiper-blog-categories .tab-btn.active .tab-btn-content').data('cat');
+
+  data.append('action', 'update_blog');
+  data.append('cat', cat);
+
+  return data;
+}
 
 function copyCurrentLink() {
   $(document).on('click', '.copy-current-link', function (e) {
     e.preventDefault();
-    
+
     // Get the current page URL
     var currentLink = window.location.href;
 
