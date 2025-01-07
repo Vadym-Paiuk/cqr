@@ -9,7 +9,17 @@
 					?>
 				</div>
 				<div class="col-12 col-md-6">
-					<p><span class="badge">News</span></p>
+					<?php
+					$post_id    = get_the_ID();
+					$categories = get_the_category( $post_id );
+					if ( ! empty( $categories ) ) :
+						?>
+						<p>
+							<?php foreach ( $categories as $category ): ?>
+								<span class="badge"><?php echo esc_html( $category->name ); ?></span>
+							<?php endforeach; ?>
+						</p>
+					<?php endif; ?>
 					<h4 class="card-title"><?php the_title(); ?></h4>
 					<p class="card-text">
 						<?php echo get_the_excerpt(); ?>

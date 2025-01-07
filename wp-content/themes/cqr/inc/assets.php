@@ -13,5 +13,5 @@ function theme_assets() {
 	$args = [
 		'wp_ajax' => admin_url( 'admin-ajax.php' ),
 	];
-	wp_localize_script( 'theme', 'args_object', $args );
+	wp_localize_script( 'theme', 'theme_ajax_object', $args );
 }
