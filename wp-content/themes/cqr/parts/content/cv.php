@@ -13,6 +13,11 @@ if ( empty( $section ) ) {
 				<?php echo $section['title']; ?>
 			</h2>
 		<?php endif; ?>
+		<?php if ( ! empty( $section['description'] ) ): ?>
+			<div class="text-center">
+				<?php echo $section['description']; ?>
+			</div>
+		<?php endif; ?>
 		<?php if ( ! empty( $section['link'] ) ): ?>
 			<div class="text-center">
 				<a class="btn btn-primary btn-arrow"
