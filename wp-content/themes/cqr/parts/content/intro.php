@@ -39,7 +39,7 @@ if ( empty( $section ) ) {
 						</p>
 					<?php endif; ?>
 					<?php if ( ! empty( $section['companies']['list'] ) ): ?>
-						<div class="trusted__row row justify-content-center">
+						<div class="intro__trusted-row row justify-content-center">
 							<?php foreach ( $section['companies']['list'] as $company ): ?>
 								<div class="col-auto">
 									<div class="company">
