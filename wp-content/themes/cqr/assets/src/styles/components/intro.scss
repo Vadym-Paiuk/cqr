@@ -32,6 +32,13 @@
     margin-bottom: 3rem;
   }
 
+  &__trusted {
+    &-row {
+      display: flex;
+      gap: 4rem;
+    }
+  }
+
   .card-img {
     height: auto;
   }
@@ -42,6 +49,15 @@
     }
     &__btn {
       margin-bottom: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__trusted {
+      &-row {
+        display: flex;
+        gap: 20px;
+      }
     }
   }
 
