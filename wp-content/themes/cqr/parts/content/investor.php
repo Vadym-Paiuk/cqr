@@ -32,27 +32,37 @@ if ( empty( $section ) ) {
 					<?php endif; ?>
 				</div>
 				<?php if ( ! empty( $section['list'] ) ): ?>
-					<div class="col-xl-8">
-						<div class="row">
-							<?php foreach ( $section['list'] as $item ): ?>
-								<div class="col-6 col-sm-4">
-									<div class="card card--white">
-										<div class="card-body">
-											<div class="investor">
-												<?php
-												if ( ! empty( $item['image'] ) ) {
-													echo wp_get_attachment_image( $item['image'], 'full' );
-												}
-												?>
-											</div>
+				<div class="col-xl-8">
+					<div class="row">
+						<?php foreach ( $section['list'] as $item ): ?>
+						<div class="col-6 col-sm-4">
+							<?php if ( ! empty( $item['link'] ) ): ?>
+							<a href="<?php echo $item['link']; ?>"
+							   target="_blank"
+							   class="card card--white">
+								<?php else: ?>
+								<div class="card card--white">
+									<?php endif; ?>
+									<div class="card-body">
+										<div class="investor">
+											<?php
+											if ( ! empty( $item['image'] ) ) {
+												echo wp_get_attachment_image( $item['image'], 'full' );
+											}
+											?>
 										</div>
 									</div>
-								</div>
-							<?php endforeach; ?>
+									<?php if ( ! empty( $item['link'] ) ): ?>
+							</a>
+							<?php else: ?>
 						</div>
+					<?php endif; ?>
 					</div>
-				<?php endif; ?>
+					<?php endforeach; ?>
+				</div>
 			</div>
+			<?php endif; ?>
 		</div>
+	</div>
 	</div>
 </section>
