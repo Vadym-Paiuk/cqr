@@ -170,12 +170,10 @@ body {
 
 .home section:nth-of-type(2) {
   .pre-title {
-    font-size: 4rem;
+    font-size: 2rem;
 
     &:before {
-      margin-bottom: 1rem;
-      width: 55px;
-      height: 28px;
+      margin-bottom: 0.5rem;
     }
   }
 }
