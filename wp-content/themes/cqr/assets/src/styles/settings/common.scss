@@ -143,7 +143,7 @@ body {
 
 .pre-title {
   color: $lightgreen;
-  font-size: 1rem;
+  font-size: 2rem;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 
@@ -158,6 +158,7 @@ body {
     margin-right: 1rem;
     vertical-align: -0.125em;
     background-repeat: no-repeat;
+    margin-bottom: 0.5rem;
   }
 
   @media screen and (min-width: 768px) {
@@ -168,17 +169,15 @@ body {
   }
 }
 
-.home section:nth-of-type(2) {
+/*.home section:nth-of-type(2) {
   .pre-title {
-    font-size: 4rem;
+    font-size: 2rem;
 
     &:before {
-      margin-bottom: 1rem;
-      width: 55px;
-      height: 28px;
+      margin-bottom: 0.5rem;
     }
   }
-}
+}*/
 
 .wrap {
   --size: 1rem;
